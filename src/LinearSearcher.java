@@ -32,6 +32,11 @@ public class LinearSearcher {
      * @return the average of the running times in nanoseconds
      */
     public double getAverageTimeInNanoSeconds(Tester.DataType dataType) {
+        if (dataType == Tester.DataType.DUMMY) {
+            runningTimes.clear();
+            return -1;
+        }
+
         double sum = 0;
         for (Long time : runningTimes) {
             sum += time;

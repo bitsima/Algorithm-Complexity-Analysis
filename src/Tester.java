@@ -10,7 +10,7 @@ import java.util.Random;
 public class Tester {
 
     public static enum DataType {
-        RANDOM, SORTED, REVERSED
+        RANDOM, SORTED, REVERSED, DUMMY
     }
 
     ArrayList<Double> averageRunTimesSelectionSortRandom = new ArrayList<>();
@@ -37,7 +37,9 @@ public class Tester {
      * @param dataType      enum type
      */
     public void testSort(int[] arrToSort, int partitionSize, DataType dataType) {
-        for (int i = 0; i < 10; i++) {
+
+        // testing each algorithm 10 times and getting the average
+        for (int i = 0; i < 11; i++) {
             int[] partitionedArr = Arrays.copyOfRange(arrToSort, 0, partitionSize);
             selectionSorter.selectionSort(partitionedArr, partitionSize);
 
@@ -46,7 +48,16 @@ public class Tester {
 
             partitionedArr = Arrays.copyOfRange(arrToSort, 0, partitionSize);
             bucketSorter.bucketSort(partitionedArr, partitionSize);
+
+            // resetting runtime data lists after the initial dummy run
+            if (i == 0) {
+                selectionSorter.getAverageTimeInMilliSeconds(DataType.DUMMY);
+                quickSorter.getAverageTimeInMilliSeconds(DataType.DUMMY);
+                bucketSorter.getAverageTimeInMilliSeconds(DataType.DUMMY);
+            }
         }
+
+        // calculating the average and resetting the records
         if (dataType == DataType.RANDOM) {
 
             averageRunTimesSelectionSortRandom.add(selectionSorter.getAverageTimeInMilliSeconds(dataType));
@@ -84,17 +95,22 @@ public class Tester {
      */
     public void testSearch(int[] arrToSearch, int partitionSize, DataType dataType) {
         if (dataType == DataType.RANDOM) {
-            for (int i = 0; i < 1000; i++) {
+            for (int i = 0; i < 1001; i++) {
                 int[] partitionedArr = Arrays.copyOfRange(arrToSearch, 0, partitionSize);
                 Random random = new Random();
                 int randomIndex = random.nextInt(partitionSize);
                 int valToFind = arrToSearch[randomIndex];
 
                 linearSearcher.linearSearch(partitionedArr, valToFind, partitionSize);
+
+                // resetting runtime data list after the initial dummy run
+                if (i == 0) {
+                    linearSearcher.getAverageTimeInNanoSeconds(DataType.DUMMY);
+                }
             }
             averageRunTimesLinearSearchRandom.add(linearSearcher.getAverageTimeInNanoSeconds(dataType));
         } else if (dataType == DataType.SORTED) {
-            for (int i = 0; i < 1000; i++) {
+            for (int i = 0; i < 1001; i++) {
                 int[] partitionedArr = Arrays.copyOfRange(arrToSearch, 0, partitionSize);
                 Random random = new Random();
                 int randomIndex = random.nextInt(partitionSize);
@@ -103,6 +119,12 @@ public class Tester {
                 linearSearcher.linearSearch(partitionedArr, valToFind, partitionSize);
 
                 binarySearcher.binarySearch(arrToSearch, valToFind, partitionSize);
+
+                // resetting runtime data lists after the initial dummy run
+                if (i == 0) {
+                    linearSearcher.getAverageTimeInNanoSeconds(DataType.DUMMY);
+                    binarySearcher.getAverageTimeInNanoSeconds(DataType.DUMMY);
+                }
             }
             averageRunTimesLinearSearchSorted.add(linearSearcher.getAverageTimeInNanoSeconds(dataType));
             averageRunTimesBinarySearch.add(binarySearcher.getAverageTimeInNanoSeconds(dataType));

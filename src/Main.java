@@ -30,7 +30,11 @@ class Main {
                 int[] reverselySortedArr = randomDatasetArr;
                 Arrays.sort(reverselySortedArr);
 
+                // instantiating the tester class
                 Tester tester = new Tester();
+
+                // Tests with Selection Sort, Quick Sort, Bucket Sort on random data with the
+                // given data partition sizes
                 tester.testSort(randomDatasetArr, 500, Tester.DataType.RANDOM);
                 tester.testSort(randomDatasetArr, 1000, Tester.DataType.RANDOM);
                 tester.testSort(randomDatasetArr, 2000, Tester.DataType.RANDOM);
@@ -42,6 +46,7 @@ class Main {
                 tester.testSort(randomDatasetArr, 128000, Tester.DataType.RANDOM);
                 tester.testSort(randomDatasetArr, 250000, Tester.DataType.RANDOM);
 
+                // Keeping a hold of the running time data in order to plot the graphs
                 ArrayList<Double> tempList = tester.getAverageRunTimesSelectionSortRandom();
                 double[] averageRunTimesSelectionSortRandom = new double[10];
                 for (int i = 0; i < 10; i++) {
@@ -63,6 +68,8 @@ class Main {
                 }
                 tester.clearAverageRunTimesBucketSortRandom();
 
+                // Tests with Selection Sort, Quick Sort, Bucket Sort on sorted data with the
+                // given data partition sizes
                 tester.testSort(sortedDatasetArr, 500, Tester.DataType.SORTED);
                 tester.testSort(sortedDatasetArr, 1000, Tester.DataType.SORTED);
                 tester.testSort(sortedDatasetArr, 2000, Tester.DataType.SORTED);
@@ -95,6 +102,9 @@ class Main {
                 }
                 tester.clearAverageRunTimesBucketSortSorted();
 
+                // Tests with Selection Sort, Quick Sort, Bucket Sort on reversely sorted data
+                // with the
+                // given data partition sizes.
                 tester.testSort(reverselySortedArr, 500, Tester.DataType.REVERSED);
                 tester.testSort(reverselySortedArr, 1000, Tester.DataType.REVERSED);
                 tester.testSort(reverselySortedArr, 2000, Tester.DataType.REVERSED);
@@ -127,6 +137,8 @@ class Main {
                 }
                 tester.clearAverageRunTimesBucketSortReversed();
 
+                // Tests with Linear Search on sorted and random data and binary search with the
+                // given data partition sizes.
                 tester.testSearch(randomDatasetArr, 500, Tester.DataType.RANDOM);
                 tester.testSearch(randomDatasetArr, 1000, Tester.DataType.RANDOM);
                 tester.testSearch(randomDatasetArr, 2000, Tester.DataType.RANDOM);
