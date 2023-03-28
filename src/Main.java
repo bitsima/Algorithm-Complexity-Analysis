@@ -11,7 +11,7 @@ class Main {
         public static void main(String args[]) throws IOException {
 
                 // reading the data
-                Scanner scanner = new Scanner(new File("TrafficFlowDataset.csv"));
+                Scanner scanner = new Scanner(new File(args[0]));
                 scanner.nextLine();
                 int[] randomDatasetArr = new int[250000];
 
