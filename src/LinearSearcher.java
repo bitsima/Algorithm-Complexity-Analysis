@@ -42,7 +42,7 @@ public class LinearSearcher {
             sum += time;
         }
         runningTimes.clear();
-        double timeInNano = sum / 10;
+        double timeInNano = sum / 1000;
         System.out.printf("Linear search %d length %s dataset 1000 runs average: %f nanoseconds\n", arrLen, dataType,
                 timeInNano);
         return (timeInNano);

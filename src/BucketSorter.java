@@ -17,6 +17,7 @@ public class BucketSorter {
         int numberOfBuckets = (int) Math.ceil(Math.sqrt(arrSizeDouble));
         ArrayList<ArrayList<Integer>> buckets = new ArrayList<>();
 
+        // initializing the buckets with empty buckets
         for (int i = 0; i < numberOfBuckets; i++) {
             ArrayList<Integer> placeHolderList = new ArrayList<>();
             buckets.add(placeHolderList);

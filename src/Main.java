@@ -24,10 +24,10 @@ class Main {
                 scanner.close();
 
                 // sorting the data for the experiments
-                int[] sortedDatasetArr = randomDatasetArr;
+                int[] sortedDatasetArr = randomDatasetArr.clone();
                 Arrays.sort(sortedDatasetArr);
 
-                int[] reverselySortedArr = randomDatasetArr;
+                int[] reverselySortedArr = randomDatasetArr.clone();
                 Arrays.sort(reverselySortedArr);
 
                 // instantiating the tester class

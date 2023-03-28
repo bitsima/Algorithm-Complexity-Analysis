@@ -57,7 +57,7 @@ public class BinarySearcher {
             sum += time;
         }
         runningTimes.clear();
-        double timeInNano = sum / 10;
+        double timeInNano = sum / 1000;
         System.out.printf("Binary search %d length %s dataset 1000 runs average: %f nanoseconds\n", arrLen, dataType,
                 timeInNano);
         return (timeInNano);
